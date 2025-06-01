@@ -105,3 +105,10 @@ window.SocialShareButton =
       when "whatsapp_web"
         SocialShareButton.openUrl("https://web.whatsapp.com/send?text=#{title}%0A#{url}")
     false
+
+# app/javascript/packs/social_share_handler.js (or in your application.js)
+document.addEventListener 'DOMContentLoaded', () => 
+  document.querySelectorAll('.social-share-button a').forEach (el) =>
+    el.addEventListener 'click', (e) ->
+      e.preventDefault();
+      SocialShareButton.share(this);
